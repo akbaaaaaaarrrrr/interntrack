@@ -1,0 +1,504 @@
+/* ============================================
+   InternTrack - Sistem Monitoring PKL
+   ============================================ */
+
+:root {
+    --primary: #1e3a5f;
+    --primary-light: #2c5282;
+    --accent: #3182ce;
+    --success: #38a169;
+    --warning: #d69e2e;
+    --danger: #e53e3e;
+    --info: #3182ce;
+    --bg: #f7fafc;
+    --card: #ffffff;
+    --text: #1a202c;
+    --text-muted: #718096;
+    --border: #e2e8f0;
+    --sidebar-width: 260px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ========== LOGIN ========== */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #3182ce 100%);
+}
+
+.login-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-card h1 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.login-card .subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(49,130,206,0.15);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover { background: var(--primary-light); }
+
+.btn-success { background: var(--success); color: white; }
+.btn-success:hover { background: #2f855a; }
+
+.btn-danger { background: var(--danger); color: white; }
+.btn-danger:hover { background: #c53030; }
+
+.btn-warning { background: var(--warning); color: white; }
+.btn-warning:hover { background: #b7791f; }
+
+.btn-info { background: var(--info); color: white; }
+.btn-info:hover { background: #2b6cb0; }
+
+.btn-sm {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.alert {
+    padding: 0.9rem 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+}
+
+.alert-danger { background: #fed7d7; color: #c53030; border: 1px solid #fc8181; }
+.alert-success { background: #c6f6d5; color: #276749; border: 1px solid #68d391; }
+.alert-warning { background: #fefcbf; color: #975a16; border: 1px solid #f6e05e; }
+.alert-info { background: #bee3f8; color: #2a4365; border: 1px solid #63b3ed; }
+
+/* ========== LAYOUT ========== */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--primary);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+}
+
+.sidebar-header h2 {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+.sidebar-header small {
+    opacity: 0.7;
+    font-size: 0.75rem;
+}
+
+.sidebar-menu {
+    padding: 1rem 0;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.5rem;
+    color: rgba(255,255,255,0.85);
+    transition: all 0.2s;
+    font-size: 0.92rem;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    border-left: 3px solid #63b3ed;
+}
+
+.sidebar-menu .menu-label {
+    padding: 0.8rem 1.5rem 0.4rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.5;
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    padding: 1.5rem 2rem;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.topbar h1 {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.user-info .badge {
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+}
+
+/* ========== CARDS ========== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.3rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--accent);
+}
+
+.stat-card.green { border-left-color: var(--success); }
+.stat-card.orange { border-left-color: var(--warning); }
+.stat-card.red { border-left-color: var(--danger); }
+.stat-card.blue { border-left-color: var(--info); }
+
+.stat-card .label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+}
+
+.stat-card .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.card {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* ========== TABLE ========== */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+table th {
+    background: #f1f5f9;
+    font-weight: 600;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+table tr:hover {
+    background: #f8fafc;
+}
+
+/* ========== BADGE STATUS ========== */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-aktif { background: #c6f6d5; color: #276749; }
+.badge-selesai { background: #bee3f8; color: #2a4365; }
+.badge-belum { background: #fefcbf; color: #975a16; }
+.badge-sangatbaik { background: #c6f6d5; color: #276749; }
+.badge-baik { background: #bee3f8; color: #2a4365; }
+.badge-perhatian { background: #fefcbf; color: #975a16; }
+.badge-pembinaan { background: #fed7d7; color: #c53030; }
+.badge-hadir { background: #c6f6d5; color: #276749; }
+.badge-izin { background: #fefcbf; color: #975a16; }
+.badge-sakit { background: #bee3f8; color: #2a4365; }
+.badge-alpa { background: #fed7d7; color: #c53030; }
+
+/* ========== FORM ========== */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.search-bar .form-control {
+    max-width: 280px;
+}
+
+select.form-control {
+    appearance: auto;
+}
+
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* ========== FILTER ========== */
+.filter-group {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Print */
+@media print {
+    .sidebar, .topbar, .btn, .search-bar, .filter-group { display: none !important; }
+    .main-content { margin-left: 0; }
+}
+
+/* ========== LOGO & ICONS ========== */
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: left;
+}
+
+.logo-img {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-header small {
+    display: block;
+    margin-top: 2px;
+}
+
+.sidebar-menu a i {
+    width: 22px;
+    text-align: center;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.login-logo img {
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+}
+
+.login-demo {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.8rem;
+    color: #718096;
+    line-height: 1.7;
+}
+
+.login-demo code {
+    background: #edf2f7;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+}
+
+.stat-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.85;
+    color: var(--primary);
+}
+
+.stat-card.blue .stat-icon { color: var(--info); }
+.stat-card.green .stat-icon { color: var(--success); }
+.stat-card.orange .stat-icon { color: var(--warning); }
+.stat-card.red .stat-icon { color: var(--danger); }
+
+.user-info i {
+    font-size: 1.3rem;
+    color: var(--primary);
+}
+
+.card-header h3 i {
+    margin-right: 0.4rem;
+    opacity: 0.8;
+}
+
+.form-group label i {
+    margin-right: 0.3rem;
+    opacity: 0.7;
+    width: 16px;
+}
